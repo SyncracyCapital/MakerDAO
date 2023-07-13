@@ -1,2 +1,2 @@
 # MakerDAO
-Dashboard to track MakerDAO KPIs
+Dashboard to track MakerDAO's KPIs
