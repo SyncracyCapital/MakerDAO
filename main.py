@@ -1,5 +1,7 @@
 import asyncio
 from datetime import datetime, timedelta
+
+import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
@@ -157,6 +159,9 @@ with total_stable_coin_supply:
     fig.update_layout(hovermode="x unified")
     st.plotly_chart(fig, use_container_width=True)
 
+    st.download_button(label="Download Data", data=df.to_csv(), file_name='total_stablecoin_supply.csv',
+                       mime='text/csv')
+
 with dai_pct_penetration:
     df = aggregate_stablecoin_supplies(data_dict)
     df = df.divide(df.sum(axis=1), axis=0)
@@ -185,6 +190,8 @@ with dai_pct_penetration:
 
     fig.update_layout(hovermode="x unified")
     st.plotly_chart(fig, use_container_width=True)
+
+    st.download_button(label="Download Data", data=df.to_csv(), file_name='dai_pct_penetration.csv', mime='text/csv')
 
 with dai_supply_across_chains:
     df = data_dict['DAI Supply (DeFi Llama)']
@@ -221,6 +228,9 @@ with dai_supply_across_chains:
     fig.update_layout(hovermode="x unified")
     st.plotly_chart(fig, use_container_width=True)
 
+    st.download_button(label="Download Data", data=df.to_csv(), file_name='dai_supply_across_chains.csv',
+                       mime='text/csv')
+
 total_decentralized_stablecoin_supply, dai_pct_penetration_decentralized, where_is_my_dai = st.columns(3)
 
 with total_decentralized_stablecoin_supply:
@@ -249,6 +259,9 @@ with total_decentralized_stablecoin_supply:
 
     fig.update_layout(hovermode="x unified")
     st.plotly_chart(fig, use_container_width=True)
+
+    st.download_button(label="Download Data", data=df.to_csv(), file_name='total_decentralized_stablecoin_supply.csv',
+                       mime='text/csv')
 
 with dai_pct_penetration_decentralized:
     df = aggregate_stablecoin_supplies(data_dict)
@@ -280,6 +293,9 @@ with dai_pct_penetration_decentralized:
     fig.update_layout(hovermode="x unified")
     st.plotly_chart(fig, use_container_width=True)
 
+    st.download_button(label="Download Data", data=df.to_csv(), file_name='dai_pct_penetration_decentralized.csv',
+                       mime='text/csv')
+
 with where_is_my_dai:
     df = data_dict['Where is my DAI?']
     df.reset_index(inplace=True)
@@ -310,6 +326,9 @@ with where_is_my_dai:
     fig.update_layout(hovermode="x unified")
     st.plotly_chart(fig, use_container_width=True)
 
+    st.download_button(label="Download Data", data=df.to_csv(), file_name='where_is_my_dai.csv',
+                       mime='text/csv')
+
 where_is_my_dai_abs, _, _ = st.columns(3)
 
 with where_is_my_dai_abs:
@@ -339,6 +358,9 @@ with where_is_my_dai_abs:
 
     fig.update_layout(hovermode="x unified")
     st.plotly_chart(fig, use_container_width=True)
+
+    st.download_button(label="Download Data", data=df.to_csv(), file_name='where_is_my_dai_abs.csv',
+                       mime='text/csv')
 
 st.header('Maker Specific Metrics')
 
@@ -374,6 +396,9 @@ with debt_breakdown:
     fig.update_layout(hovermode="x unified")
     st.plotly_chart(fig, use_container_width=True)
 
+    st.download_button(label="Download Data", data=df.to_csv(), file_name='debt_at_risk.csv',
+                       mime='text/csv')
+
 with psm_reserves:
     df = data_dict['PSM Statistics']
     cols_to_keep = ['psm_balance', 'inflow', 'outflow']
@@ -405,6 +430,9 @@ with psm_reserves:
 
     st.plotly_chart(fig, use_container_width=True)
 
+    st.download_button(label="Download Data", data=df.to_csv(), file_name='psm_stats.csv',
+                       mime='text/csv')
+
 with psm_swap_fees:
     df = data_dict['PSM Statistics']
     cols_to_keep = ['lifetime_fees', 'fees']
@@ -433,6 +461,9 @@ with psm_swap_fees:
     fig.update_layout(title_text='PSM: Swap Fees')
 
     st.plotly_chart(fig, use_container_width=True)
+
+    st.download_button(label="Download Data", data=df.to_csv(), file_name='psm_fees.csv',
+                       mime='text/csv')
 
 surplus_buffer, revenue_breakdown, collateral_by_type = st.columns(3)
 
@@ -464,6 +495,9 @@ with surplus_buffer:
     fig.update_layout(hovermode="x unified")
     st.plotly_chart(fig, use_container_width=True)
 
+    st.download_button(label="Download Data", data=df.to_csv(), file_name='surplus_buffer.csv',
+                       mime='text/csv')
+
 with revenue_breakdown:
     df = data_dict['Annualized MKR Revenue']
     df.reset_index(inplace=True)
@@ -492,6 +526,9 @@ with revenue_breakdown:
     fig.update_layout(hovermode="x unified")
     st.plotly_chart(fig, use_container_width=True)
 
+    st.download_button(label="Download Data", data=df.to_csv(), file_name='mkr_revenue.csv',
+                       mime='text/csv')
+
 with collateral_by_type:
     df = data_dict['Annualized MKR Revenue']
     df.reset_index(inplace=True)
@@ -519,6 +556,9 @@ with collateral_by_type:
 
     fig.update_layout(hovermode="x unified")
     st.plotly_chart(fig, use_container_width=True)
+
+    st.download_button(label="Download Data", data=df.to_csv(), file_name='mkr_collateral.csv',
+                       mime='text/csv')
 
 mkr_treasury, _, _ = st.columns(3)
 
@@ -549,3 +589,6 @@ with mkr_treasury:
 
     fig.update_layout(hovermode="x unified")
     st.plotly_chart(fig, use_container_width=True)
+
+    st.download_button(label="Download Data", data=df.to_csv(), file_name='mkr_treasury.csv',
+                       mime='text/csv')
