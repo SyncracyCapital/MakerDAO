@@ -235,7 +235,7 @@ total_decentralized_stablecoin_supply, dai_pct_penetration_decentralized, where_
 
 with total_decentralized_stablecoin_supply:
     df = aggregate_stablecoin_supplies(data_dict)
-    df = df[['DAI Supply', 'crvUSD Supply', 'LUSD Supply', 'MIM Supply', 'FEI Supply']]
+    df = df[['DAI Supply', 'FRAX Supply', 'crvUSD Supply', 'LUSD Supply', 'MIM Supply', 'FEI Supply']]
 
     data_subset = df.loc[zoom_in_date_start:zoom_in_date_end]
 
@@ -265,7 +265,7 @@ with total_decentralized_stablecoin_supply:
 
 with dai_pct_penetration_decentralized:
     df = aggregate_stablecoin_supplies(data_dict)
-    df = df[['DAI Supply', 'crvUSD Supply', 'LUSD Supply', 'MIM Supply', 'FEI Supply']]
+    df = df[['DAI Supply', 'FRAX Supply', 'crvUSD Supply', 'LUSD Supply', 'MIM Supply', 'FEI Supply']]
     df = df.divide(df.sum(axis=1), axis=0)
     df['DAI Supply'] = df['DAI Supply'].rolling(7).mean()
 
